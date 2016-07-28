@@ -13,7 +13,7 @@ Restaurant Menu Provider -- add a restuarant of your own or get `json` of other
 
 --------------------------------------------------------------
 
-Enjoy :fireworks: :joy:
+Enjoy :fireworks: :joy: /play secret
 
 
 
