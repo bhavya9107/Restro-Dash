@@ -17,11 +17,11 @@
       width: 3px; 
     }
     body::-webkit-scrollbar-track-piece{
-      margin-top: 5px;
-      margin-bottom: 5px;
       background: transparent !important; 
     }
     body::-webkit-scrollbar-thumb {
+      border-top: 5px solid blue;
+      border-bottom: 5px solid blue;
       border-radius: 1.5px;
       background: rgba(0,0,255,0.5) !important; 
     }
@@ -36,6 +36,7 @@
         width: 45%;
       }
     }
+
     </style>
 </head>
 
@@ -47,6 +48,7 @@
     style="position:fixed;z-index: 999; float: left; margin-top: 40px; margin-left: 5px; color: white;">
     <i class="material-icons">navigate_before</i>
 </a>
+
 {% if login_session['username'] %}
     <div style="position: absolute; z-index: 999; right: 5px; margin-top: 40px; margin-right: 5px; color: white;">
     <img src="{{ login_session['picture'] }}" style="width: 50px; height: 50px; border-radius: 50%;">
@@ -75,7 +77,7 @@
            background-attachment: fixed;">
     <center>
             </br>
-                <img src="{{creator.picture}}" style="width: 70px; height: 70px; border-radius: 50%;">
+            <img src="{{creator.picture}}" style="width: 70px; height: 70px; border-radius: 50%;">
             <br>
                 <h2 style="font-family: 'Lobster', cursive; 
                            display: inline-block; 
@@ -88,46 +90,10 @@
     <small>Created by {{creator.name}}</small>
     </center>
 </div>
-<div style="float: right; margin-top: -25px; margin-right: 5px;">
-<a class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" 
-   href="{{url_for('newMenuItem',restaurant_id=restaurant.id)}}">
-   <i class="material-icons">add</i>
-</a>
-<a class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" 
-   href="{{url_for('deleteRestaurant',restaurant_id=restaurant.id)}}">
-   <i class="material-icons">delete_sweep</i>
-</a>
-</div>
 <br>
 <br>
 <br>
-<center>
-        {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    
-                        {% for message in messages %}
-                        <div class="mdl-snackbar mdl-js-snackbar">
-                        <div class="mdl-snackbar__text"></div>
-                        <button type="button" class="mdl-snackbar__action"></button>
-                        </div>
-                        <script>
-                        r(function(){
-                            
-                                var notification = document.querySelector('.mdl-js-snackbar');
-                                notification.MaterialSnackbar.showSnackbar({message:'{{message}}'});
-                            
-                        });
-                        function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
-                       
-                        </script>
-                        
-                        {% endfor %}
-                    
-                {% endif %}
-        {% endwith %}
-</center>
-        
-<center>        
+ <center>  
 {% for i in items %}
 
         <div class="mdl-card mdl-shadow--2dp">
@@ -142,22 +108,10 @@
                 </p>
             </div>
 
-            <div class="mdl-card__actions mdl-card--border">
-                <a 
-                    href="{{url_for('editMenuItem',restaurant_id=restaurant.id,MenuID=i.id)}}" 
-                    class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                    Edit
-                </a>
-        </div>
-
-        <div class="mdl-card__menu">
-            <a href="{{url_for('deleteMenuItem',restaurant_id=restaurant.id,menu_id=i.id)}}">
-                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                    <i class="material-icons">delete</i>
-                </button>
-            </a>
-        </div>
+            
     </div>
+
+
 {% endfor %}
 </center>
  <footer class="mdl-mini-footer">

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-deep_purple.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--LOAD PRE-REQUISITES FOR GOOGLE SIGN IN -->
@@ -21,6 +22,25 @@
 </head>
 
 <body>
+<!--<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '274621372906625',
+      xfbml      : true,
+      version    : 'v2.7'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>-->
+    
+    <br>
     <br>
     <a href="/">
         <button style="float: right; margin-right: 20px;" class="mdl-button mdl-js-button mdl-button--icon">
@@ -31,6 +51,12 @@
     <center>
         <h1 style="font-family: 'Lobster', cursive;">Login | Restro Dash</h1>
         <h6>Food is waiting for you ....</h6>
+        <!--<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>-->
 
         <!-- GOOGLE PLUS SIGN IN-->
         <div id="signInButton">
@@ -39,7 +65,8 @@
           </span>
         </div>
 
-        <div id="result"></div>
+
+        
     </center>
     <script>
         function signInCallback(authResult) {
@@ -73,6 +100,69 @@
         }
     </script>
     <!--END GOOGLE PLUS SIGN IN -->
+
+<!--FACEBOOK SIGN IN -->
+<script>
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '274621372906625',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.2' // use version 2.2
+  });
+  };
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function sendTokenToServer() {
+    var access_token = FB.getAuthResponse()['accessToken'];
+    console.log(access_token)
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+     $.ajax({
+      type: 'POST',
+      url: '/fbconnect?state={{STATE}}',
+      processData: false,
+      data: access_token,
+      contentType: 'application/octet-stream; charset=utf-8',
+      success: function(result) {
+        // Handle or verify the server response if necessary.
+        if (result) {
+          $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+         setTimeout(function() {
+          window.location.href = "/";
+         }, 4000);
+          
+      } else {
+        $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+         }
+      }
+      
+  });
+    });
+  }
+</script>
+
+<center>
+<fb:login-button scope="public_profile,email" onlogin="sendTokenToServer();" class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false">
+<a href='javascript:sendTokenToServer()'></a>
+
+</fb:login-button>
+
+
+<div id="result"></div>
+
+</center>
+<!--END FACEBOOK SIGN IN -->
 </body>
 
 </html>
