@@ -18,7 +18,7 @@ import requests
 CLIENT_ID= json.loads(
     open('client_secrets.json', 'r').read())['web']['client_id']
 
-engine = create_engine('sqlite:///restaurantmenu.db')
+engine = create_engine('postgres://dspbwegueaizep:J1p7AmtmyNjzYUgwoYjKI0H1O8@ec2-23-21-234-218.compute-1.amazonaws.com:5432/ddb5gkevc1sdo5')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
