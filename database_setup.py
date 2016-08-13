@@ -30,6 +30,7 @@ class Restaurant(Base):
     user_id=Column(
         Integer, ForeignKey('user.id')
     )
+    menuItems = relationship("MenuItem",cascade="all, delete-orphan")
     
     @property
     def serialRes(self):
@@ -76,6 +77,6 @@ class MenuItem(Base):
     
 #insert at the end of file
 engine= create_engine(
-    'sqlite:///restaurantmenu.db')
+    ' postgres://dspbwegueaizep:J1p7AmtmyNjzYUgwoYjKI0H1O8@ec2-23-21-234-218.compute-1.amazonaws.com:5432/ddb5gkevc1sdo5')
 Base.metadata.create_all(engine)
 print 'done'
