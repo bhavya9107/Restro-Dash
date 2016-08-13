@@ -1,1 +1,1 @@
-gunicorn Restro_Dash:app
+web: gunicorn Restro_Dash:app
