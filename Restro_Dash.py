@@ -341,7 +341,7 @@ def gdisconnect():
             del login_session['email']
             del login_session['picture']
             
-            flash("Come Back soon here")
+            flash("Come Back soon!!")
             return redirect(url_for('first'))
         else:
         
@@ -360,9 +360,9 @@ def disconnect():
         if login_session['provider'] == 'facebook':
             fbdisconnect()
             del login_session['facebook_id']
-        del login_session['username']
-        del login_session['email']
-        del login_session['picture']
+            del login_session['username']
+            del login_session['email']
+            del login_session['picture']
         del login_session['user_id']
         del login_session['provider']
         flash("You have successfully been logged out.")
