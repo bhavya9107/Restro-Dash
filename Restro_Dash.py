@@ -307,9 +307,9 @@ def gconnect():
     output = ''
     output += '''
     <div class="mdl-card mdl-shadow--2dp" style="padding: 12px;">
-    <h3>Welcome,'''
+    <h4>Welcome,'''
     output += login_session['username']
-    output += '!</h3>'
+    output += '!</h4><hr/>'
     output += '<img src="'
     output += login_session['picture']
     output += ' " style = "width: 100px; height: 100px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"></div>'
