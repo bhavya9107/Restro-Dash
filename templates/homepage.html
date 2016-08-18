@@ -137,14 +137,14 @@
             <h4 style="text-shadow: 0px 0px 5px blue;">{{message}}</h4>
             {% endfor %}
             {% else %}
-            <h4 style="text-shadow: 0px 0px 5px blue;">See your favourite Restraurant's menu</h4>
+            <h4 style="text-shadow: 0px 0px 5px blue;">Lets Satisfy Each Others Hunger</h4>
             {% endif %} 
             {% endwith %}
 
             {% if login_session['username'] %}
             <a href="{{url_for('newRestaurant')}}">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-            Create Yours NOW
+            Add Restaurant
             </button> 
             </a>
             {% else %}
