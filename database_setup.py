@@ -77,6 +77,6 @@ class MenuItem(Base):
     
 #insert at the end of file
 engine= create_engine(
-    'postgres://wyfrfiugvlaoac:mKFj8hPNc2b6Fm1B5fB9QqdZXP@ec2-54-227-245-222.compute-1.amazonaws.com:5432/dfogbd5cbb34g8')
+    'postgres://keocmrsvpcpruk:69N2DzvxVCXUZ7AV8ayBM3uysj@ec2-54-243-208-195.compute-1.amazonaws.com:5432/dqkniujtqqtq1')
 Base.metadata.create_all(engine)
 print 'done'
