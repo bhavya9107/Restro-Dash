@@ -1,6 +1,6 @@
 # Restro-Dash
 
-Restaurant Menu Provider -- add a restuarant of your own or get `json` of others
+Restaurant Menu Provider -- add a restuarant of your own or get `json` of others.
 
 ##Instructions for running on local host
 -------------------------------------------------------------
