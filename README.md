@@ -2,7 +2,7 @@
 
 Restaurant Menu Provider -- add a restuarant of your own or get `json` of others.
 
-##Instructions for running on local host
+## Instructions for running on local host
 -------------------------------------------------------------
 1. Open `cmd` or `terminal`.
 2. Run `python database_setup.py`.   // creates a database
